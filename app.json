@@ -3,6 +3,7 @@
   "displayName": "HelloIgnite",
   "expo": {
     "name": "HelloIgnite",
+    "owner": "addianto",
     "slug": "HelloIgnite",
     "scheme": "helloignite",
     "version": "1.0.0",
@@ -74,7 +75,6 @@
     },
     "extra": {
       "eas": {
-        "owner": "addianto",
         "projectId": "85621887-a7b4-49e6-ae1d-ab7856458bbd"
       }
     }
