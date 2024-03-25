@@ -36,7 +36,14 @@
       "extends": "preview",
       "ios": { "simulator": false }
     },
-    "production": {}
+    "production": {
+      "android": {
+        "image": "ubuntu-22.04-jdk-17-ndk-r21e"
+      },
+      "ios": {
+        "image": "macos-ventura-13.6-xcode-15.2"
+      }
+    }
   },
   "submit": {
     "production": {}
