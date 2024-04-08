@@ -17,17 +17,6 @@ export const ChartDemoScreen: FC<ChartDemoScreenProps> = observer(function Chart
     { value: 307.65, color: "blue", text: "307,65 M" },
   ]
   
-  const dataPosturAPBDData = {
-    dataSets: [{
-      label: "APBD",
-      values: [
-        { value: 3850.93, label: "A" },
-        { value: 4158.59, label: "B" },
-        { value: 307.65, label: "C" },
-      ],
-    }],
-  }
-  
   let focusValue = ""
 
   // Pull in one of our MST stores
@@ -39,36 +28,35 @@ export const ChartDemoScreen: FC<ChartDemoScreenProps> = observer(function Chart
     <Screen style={$root} preset="scroll">
       <Text preset="heading">Postur APBD Kota Depok (April 2024)</Text>
       <Text preset="subheading">react-native-gifted-charts</Text>
-      <View>
-        <PieChart
-          donut
-          showText
-          radius={150}
-          textBackgroundColor="#333"
-          textColor="white"
-          textSize={16}
-          fontWeight="bold"
-          // TODO: Figure out why onPress did not work
-          onPress={(item, _) => {
-            console.log("Press")
-            console.log("Item Text: " + item.text)
-            focusValue = item.text
-          }}
-          centerLabelComponent={() => {
-            return (
-              <Text preset="bold">{focusValue}</Text>
-            )
-          }}
-          focusOnPress
-          data={dataPosturAPBD}
-        />
-      </View>
+      <PieChart
+        donut
+        showText
+        radius={150}
+        textBackgroundColor="#333"
+        textColor="white"
+        textSize={16}
+        fontWeight="bold"
+        // TODO: Figure out why onPress did not work
+        onPress={(item, _) => {
+          console.log("Press")
+          console.log("Item Text: " + item.text)
+          focusValue = item.text
+        }}
+        centerLabelComponent={() => {
+          return (
+            <Text preset="bold">{focusValue}</Text>
+          )
+        }}
+        focusOnPress
+        data={dataPosturAPBD}
+      />
       <Text>Sumber: https://djpk.kemenkeu.go.id/portal/data/apbd?periode=4&tahun=2024&provinsi=10&pemda=21</Text>
     </Screen>
   )
 })
 
 // TODO: Try Victory library: https://github.com/FormidableLabs/victory
+// Do not forget to add Reanimated plugin to babel.config.js, as explained in the README.md file
 
 const $root: ViewStyle = {
   flex: 1,

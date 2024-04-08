@@ -26,6 +26,9 @@ dependencies:
   '@shopify/flash-list':
     specifier: 1.6.3
     version: 1.6.3(@babel/runtime@7.24.1)(react-native@0.73.4)(react@18.2.0)
+  '@shopify/react-native-skia':
+    specifier: 0.1.221
+    version: 0.1.221(react-native-reanimated@3.6.3)(react-native@0.73.4)(react@18.2.0)
   apisauce:
     specifier: 3.0.1
     version: 3.0.1
@@ -87,13 +90,13 @@ dependencies:
     specifier: 4.0.0-alpha.1
     version: 4.0.0-alpha.1(react-native-gesture-handler@2.14.1)(react-native-reanimated@3.6.3)(react-native@0.73.4)(react@18.2.0)
   react-native-gesture-handler:
-    specifier: ~2.14.0
+    specifier: ~2.14.1
     version: 2.14.1(react-native@0.73.4)(react@18.2.0)
   react-native-gifted-charts:
     specifier: ^1.4.9
     version: 1.4.9(expo-linear-gradient@12.7.2)(react-native-svg@14.1.0)(react-native@0.73.4)(react@18.2.0)
   react-native-reanimated:
-    specifier: ~3.6.0
+    specifier: ~3.6.3
     version: 3.6.3(@babel/core@7.24.3)(@babel/plugin-proposal-nullish-coalescing-operator@7.18.6)(@babel/plugin-proposal-optional-chaining@7.21.0)(@babel/plugin-transform-arrow-functions@7.24.1)(@babel/plugin-transform-shorthand-properties@7.24.1)(@babel/plugin-transform-template-literals@7.24.1)(react-native@0.73.4)(react@18.2.0)
   react-native-safe-area-context:
     specifier: 4.8.2
@@ -109,7 +112,7 @@ dependencies:
     version: 0.19.10(react-dom@18.2.0)(react@18.2.0)
   victory-native:
     specifier: ^40.1.0
-    version: 40.1.0(@shopify/react-native-skia@1.1.0)(react-native-gesture-handler@2.14.1)(react-native-reanimated@3.6.3)(react-native@0.73.4)(react@18.2.0)
+    version: 40.1.0(@shopify/react-native-skia@0.1.221)(react-native-gesture-handler@2.14.1)(react-native-reanimated@3.6.3)(react-native@0.73.4)(react@18.2.0)
 
 devDependencies:
   '@babel/core':
@@ -3205,8 +3208,8 @@ packages:
       tslib: 2.4.0
     dev: false
 
-  /@shopify/react-native-skia@1.1.0(react-native-reanimated@3.6.3)(react-native@0.73.4)(react@18.2.0):
-    resolution: {integrity: sha512-0UglaRyD9R4Fd7BgDJN88oZg+ZMcnSIprqp0l1dupPE4dBvHe6gZVhwvfiL+Cq6lWo9RI7KyJKp7fEAGgKj7sw==}
+  /@shopify/react-native-skia@0.1.221(react-native-reanimated@3.6.3)(react-native@0.73.4)(react@18.2.0):
+    resolution: {integrity: sha512-hbwl6NJzVRBKVP39JrjVUg6r3sGNlDt17WUluPoF3h1Pv3A4qzwc9VrWNqvWr3H/0XZPuZPCop7EEz2ereYDfA==}
     hasBin: true
     peerDependencies:
       react: '>=18.0'
@@ -11452,7 +11455,7 @@ packages:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
 
-  /victory-native@40.1.0(@shopify/react-native-skia@1.1.0)(react-native-gesture-handler@2.14.1)(react-native-reanimated@3.6.3)(react-native@0.73.4)(react@18.2.0):
+  /victory-native@40.1.0(@shopify/react-native-skia@0.1.221)(react-native-gesture-handler@2.14.1)(react-native-reanimated@3.6.3)(react-native@0.73.4)(react@18.2.0):
     resolution: {integrity: sha512-osdF15xP85nNsghFkwKRWPG4FTxYvBhjtEkf2wmLIFv1OS6v7YFBFT5rNA5dBRa3RTMkyfDfsJOImDnaY/l9aw==}
     peerDependencies:
       '@shopify/react-native-skia': '>=0.1.190'
@@ -11461,7 +11464,7 @@ packages:
       react-native-gesture-handler: '>=2.0.0'
       react-native-reanimated: '>=3.0.0'
     dependencies:
-      '@shopify/react-native-skia': 1.1.0(react-native-reanimated@3.6.3)(react-native@0.73.4)(react@18.2.0)
+      '@shopify/react-native-skia': 0.1.221(react-native-reanimated@3.6.3)(react-native@0.73.4)(react@18.2.0)
       d3-scale: 4.0.2
       d3-shape: 3.2.0
       react: 18.2.0
