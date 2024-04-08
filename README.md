@@ -162,3 +162,8 @@ Follow our [Maestro Setup](https://ignitecookbook.com/docs/recipes/MaestroSetup)
 - [2018 aka Bowser](https://github.com/infinitered/ignite-bowser)
 - [2017 aka Andross](https://github.com/infinitered/ignite-andross)
 - [2016 aka Ignite 1.0](https://github.com/infinitered/ignite-ir-boilerplate-2016)
+
+## Notes on Dependencies
+
+- [`react-native-gifted-charts`](https://github.com/Abhinandan-Kushwaha/react-native-gifted-charts) was installed using the Expo command: `npx expo install react-native-gifted-charts expo-linear-gradient react-native-svg`
+  The equivalent, React Native CLI version of the installation command: `npm install react-native-gifted-charts react-native-linear-gradient react-native-svg`
