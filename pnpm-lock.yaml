@@ -145,6 +145,9 @@ devDependencies:
   '@types/react':
     specifier: ~18.2.14
     version: 18.2.67
+  '@types/react-native-charts-wrapper':
+    specifier: ^0.5.11
+    version: 0.5.11(@babel/core@7.24.3)(@babel/preset-env@7.24.3)(react@18.2.0)
   '@types/react-test-renderer':
     specifier: ^18.0.0
     version: 18.0.7
@@ -3346,6 +3349,21 @@ packages:
 
   /@types/prop-types@15.7.11:
     resolution: {integrity: sha512-ga8y9v9uyeiLdpKddhxYQkxNDrfvuPrlFb0N1qnZZByvcElJaXthF1UhvCh9TLWJBEHeNtdnbysW7Y6Uq8CVng==}
+    dev: true
+
+  /@types/react-native-charts-wrapper@0.5.11(@babel/core@7.24.3)(@babel/preset-env@7.24.3)(react@18.2.0):
+    resolution: {integrity: sha512-wntctaZsHEgVh6+FoPoNOEM5yH00WKJ1lhXzqTGcXCnfmCBUa9DawJzHU6t7PozbJZsT1fvZFC8z2mFhLAO9iA==}
+    dependencies:
+      '@types/react': 18.2.67
+      react-native: 0.73.4(@babel/core@7.24.3)(@babel/preset-env@7.24.3)(react@18.2.0)
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@babel/preset-env'
+      - bufferutil
+      - encoding
+      - react
+      - supports-color
+      - utf-8-validate
     dev: true
 
   /@types/react-test-renderer@18.0.7:
