@@ -3,8 +3,7 @@ import { observer } from "mobx-react-lite"
 import { View, ViewStyle } from "react-native"
 import { AppStackScreenProps } from "app/navigators"
 import { Screen, Text } from "app/components"
-import { PieChart as PieChartGifted } from "react-native-gifted-charts"
-import { PieChart } from "react-native-charts-wrapper"
+import { PieChart } from "react-native-gifted-charts"
 // import { useNavigation } from "@react-navigation/native"
 // import { useStores } from "app/models"
 
@@ -41,7 +40,7 @@ export const ChartDemoScreen: FC<ChartDemoScreenProps> = observer(function Chart
       <Text preset="heading">Postur APBD Kota Depok (April 2024)</Text>
       <Text preset="subheading">react-native-gifted-charts</Text>
       <View>
-        <PieChartGifted
+        <PieChart
           donut
           showText
           radius={150}
@@ -62,12 +61,6 @@ export const ChartDemoScreen: FC<ChartDemoScreenProps> = observer(function Chart
           }}
           focusOnPress
           data={dataPosturAPBD}
-        />
-      </View>
-      <Text preset="subheading">react-native-charts-wrapper</Text>
-      <View>
-        <PieChart
-          data={dataPosturAPBDData}
         />
       </View>
       <Text>Sumber: https://djpk.kemenkeu.go.id/portal/data/apbd?periode=4&tahun=2024&provinsi=10&pemda=21</Text>
