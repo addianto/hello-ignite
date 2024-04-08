@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite"
 import { ViewStyle } from "react-native"
 import { AppStackScreenProps } from "app/navigators"
 import { Screen, Text } from "app/components"
-import { PieChart } from "react-native-gifted-charts"
+import { BarChart, PieChart } from "react-native-gifted-charts"
 // import { useNavigation } from "@react-navigation/native"
 // import { useStores } from "app/models"
 
@@ -17,6 +17,12 @@ export const ChartDemoScreen: FC<ChartDemoScreenProps> = observer(function Chart
     { value: 307.65, color: "blue", text: "307,65 M" },
   ]
   
+  const dataPendapatanDaerah = [
+    { value: 1762.30, label: "PAD" },
+    { value: 1454.61, label: "TKDD" },
+    { value: 634.02, label: "Lainnya" },
+  ]
+  
   let focusValue = ""
 
   // Pull in one of our MST stores
@@ -24,10 +30,13 @@ export const ChartDemoScreen: FC<ChartDemoScreenProps> = observer(function Chart
 
   // Pull in navigation via hook
   // const navigation = useNavigation()
+  // 
+
+  // TODO: Coba line chart dan bar chart, lalu bisa diganti isinya melalui combo box
   return (
     <Screen style={$root} preset="scroll">
       <Text preset="heading">Postur APBD Kota Depok (April 2024)</Text>
-      <Text preset="subheading">react-native-gifted-charts</Text>
+      <Text>Pendapatan Daerah, Belanja Daerah, Pembiayaan Daerah</Text>
       <PieChart
         donut
         showText
@@ -49,6 +58,11 @@ export const ChartDemoScreen: FC<ChartDemoScreenProps> = observer(function Chart
         }}
         focusOnPress
         data={dataPosturAPBD}
+      />
+      <Text preset="subheading">Pendapatan Daerah</Text>
+      <BarChart
+        isThreeD
+        data={dataPendapatanDaerah}
       />
       <Text>Sumber: https://djpk.kemenkeu.go.id/portal/data/apbd?periode=4&tahun=2024&provinsi=10&pemda=21</Text>
     </Screen>
