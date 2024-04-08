@@ -68,6 +68,8 @@ export const ChartDemoScreen: FC<ChartDemoScreenProps> = observer(function Chart
   )
 })
 
+// TODO: Try Victory library: https://github.com/FormidableLabs/victory
+
 const $root: ViewStyle = {
   flex: 1,
 }
