@@ -5,6 +5,7 @@ import Config from "../../config"
 import { SupabaseApiConfig } from "./supabase.types"
 import { Database, Tables } from "../../database"
 import { getSupabaseProblem, SupabaseProblem } from "./supabaseProblem"
+import { TahunSnapshotIn } from "app/models"
 
 export const DEFAULT_API_CONFIG: SupabaseApiConfig = {
     url: Config.SUPABASE_URL,
@@ -50,7 +51,7 @@ export class Supabase {
         return { kind: "ok", data }
     }
     
-    async getTahuns(): Promise<{ kind: "ok"; data: number[] } | SupabaseProblem> {
+    async getTahuns(): Promise<{ kind: "ok"; data: TahunSnapshotIn[] } | SupabaseProblem> {
         const { data, error } = await this.supabase.from("tahun").select().returns<number[]>()
         
         if (error) {
@@ -62,12 +63,9 @@ export class Supabase {
             }
         }
         
-        if (!data) {
-            console.error("data is empty")
-            return { kind: "unknown" }
-        }
+        const snapshots: TahunSnapshotIn[] = data?.map((e) => ({ tahun: e })) ?? []
         
-        return { kind: "ok", data }
+        return { kind: "ok", data: snapshots }
     }
 }
 
