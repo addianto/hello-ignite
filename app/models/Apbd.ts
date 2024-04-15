@@ -1,5 +1,6 @@
 import { Instance, SnapshotIn, SnapshotOut, types } from "mobx-state-tree"
 import { withSetPropAction } from "./helpers/withSetPropAction"
+import { DaerahModel } from "./Daerah"
 
 /**
  * Model description here for TypeScript hints.
@@ -8,7 +9,7 @@ export const ApbdModel = types
   .model("Apbd")
   .props({
     id: types.identifierNumber,
-    id_daerah: types.identifierNumber,
+    id_daerah: types.reference(DaerahModel),
     tahun: types.number,
     anggaran: types.float,
     realisasi: types.float,
