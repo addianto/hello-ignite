@@ -44,8 +44,8 @@ const TahunDropdown = function TahunDropdown({ data }: { data: Tahun[] }) {
   const toItems = (data: Tahun[]) =>
     data.map((t) => {
       return {
-        label: t.tahun.toString(),
-        value: t.tahun.toString(),
+        label: t.tahun ? t.tahun.toString() : "",
+        value: t.tahun ? t.tahun.toString() : "",
       }
     })
 
