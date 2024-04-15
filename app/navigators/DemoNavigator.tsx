@@ -5,7 +5,7 @@ import { TextStyle, ViewStyle } from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { Icon } from "../components"
 import { translate } from "../i18n"
-import { DemoCommunityScreen, DemoShowroomScreen, DemoDebugScreen } from "../screens"
+import { DemoCommunityScreen, DemoShowroomScreen, DemoDebugScreen, DemoChartScreen } from "../screens"
 import { DemoPodcastListScreen } from "../screens/DemoPodcastListScreen"
 import { colors, spacing, typography } from "../theme"
 import { AppStackParamList, AppStackScreenProps } from "./AppNavigator"
@@ -95,6 +95,18 @@ export function DemoNavigator() {
           ),
         }}
       />
+
+      <Tab.Screen
+        name="DemoChart"
+        component={DemoChartScreen}
+        options={{
+          tabBarLabel: "Chart",
+          tabBarIcon: ({ focused }) => (
+            <Icon icon="debug" color={focused ? colors.tint : undefined} size={30} />
+          ),
+        }}
+      />
+
     </Tab.Navigator>
   )
 }

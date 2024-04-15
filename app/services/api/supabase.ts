@@ -60,7 +60,7 @@ export class Supabase {
             }
         }
         
-        const snapshots: TahunSnapshotIn[] = data?.map((e) => ({ tahun: e })) ?? []
+        const snapshots: TahunSnapshotIn[] = data?.map((e) => ({ tahun: e.tahun })) ?? []
         
         return { kind: "ok", data: snapshots }
     }

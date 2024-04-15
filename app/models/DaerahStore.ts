@@ -23,6 +23,11 @@ export const DaerahStoreModel = types
       }
     },
   }))
+  .actions((store) => ({
+    getDaerahs() {
+      return store.daerahs
+    }
+  }))
 
 export interface DaerahStore extends Instance<typeof DaerahStoreModel> {}
 export interface DaerahStoreSnapshotOut extends SnapshotOut<typeof DaerahStoreModel> {}

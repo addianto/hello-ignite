@@ -23,6 +23,11 @@ export const TahunStoreModel = types
       }
     },
   }))
+  .views((store) => ({
+    getTahuns() {
+      return store.tahuns
+    }  
+  }))
 
 export interface TahunStore extends Instance<typeof TahunStoreModel> {}
 export interface TahunStoreSnapshotOut extends SnapshotOut<typeof TahunStoreModel> {}
