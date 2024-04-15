@@ -15,7 +15,7 @@ export const DaerahStoreModel = types
   .actions((store) => ({
     async fetchDaerahs() {
       const response = await supabase.getDaerahs()
-      
+
       if (response.kind === "ok") {
         store.setProp("daerahs", response.data)
       } else {
@@ -26,7 +26,7 @@ export const DaerahStoreModel = types
   .actions((store) => ({
     getDaerahs() {
       return store.daerahs
-    }
+    },
   }))
 
 export interface DaerahStore extends Instance<typeof DaerahStoreModel> {}

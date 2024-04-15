@@ -15,7 +15,7 @@ export const TahunStoreModel = types
   .actions((store) => ({
     async fetchTahuns() {
       const response = await supabase.getTahuns()
-      
+
       if (response.kind === "ok") {
         store.setProp("tahuns", response.data)
       } else {
@@ -26,7 +26,7 @@ export const TahunStoreModel = types
   .views((store) => ({
     getTahuns() {
       return store.tahuns
-    }  
+    },
   }))
 
 export interface TahunStore extends Instance<typeof TahunStoreModel> {}

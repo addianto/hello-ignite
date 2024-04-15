@@ -17,13 +17,18 @@ export const ApbdModel = types
   .actions((self) => ({})) // eslint-disable-line @typescript-eslint/no-unused-vars
   .views((apbd) => ({
     get ratio() {
-      return (apbd.realisasi / apbd.anggaran)
-    }
+      return apbd.realisasi / apbd.anggaran
+    },
   }))
 
 export interface Apbd extends Instance<typeof ApbdModel> {}
 export interface ApbdSnapshotOut extends SnapshotOut<typeof ApbdModel> {}
 export interface ApbdSnapshotIn extends SnapshotIn<typeof ApbdModel> {}
-export const createApbdDefaultModel = () => types.optional(ApbdModel, {
-  id: 0, id_daerah: 0, tahun: 0, anggaran: 0.0, realisasi: 0.0,
-})
+export const createApbdDefaultModel = () =>
+  types.optional(ApbdModel, {
+    id: 0,
+    id_daerah: 0,
+    tahun: 0,
+    anggaran: 0.0,
+    realisasi: 0.0,
+  })
