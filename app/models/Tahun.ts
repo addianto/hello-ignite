@@ -7,7 +7,7 @@ import { withSetPropAction } from "./helpers/withSetPropAction"
 export const TahunModel = types
   .model("Tahun")
   .props({
-    tahun: types.number,
+    tahun: types.maybeNull(types.number),
   })
   .actions(withSetPropAction)
 
