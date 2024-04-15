@@ -58,7 +58,12 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      tahun: {
+        Row: {
+          tahun: number | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       [_ in never]: never
