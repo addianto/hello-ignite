@@ -8,7 +8,7 @@ export const DaerahModel = types
   .model("Daerah")
   .props({
     id: types.identifierNumber,
-    daerah: types.maybeNull(types.string),
+    daerah: types.string,
   })
   .actions(withSetPropAction)
   .views((self) => ({})) // eslint-disable-line @typescript-eslint/no-unused-vars

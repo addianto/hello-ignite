@@ -37,15 +37,15 @@ export type Database = {
       }
       daerah: {
         Row: {
-          daerah: string | null
+          daerah: string
           id: number
         }
         Insert: {
-          daerah?: string | null
+          daerah: string
           id: number
         }
         Update: {
-          daerah?: string | null
+          daerah?: string
           id?: number
         }
         Relationships: []
