@@ -23,9 +23,9 @@ export const DaerahStoreModel = types
       }
     },
   }))
-  .actions((store) => ({
-    getDaerahs() {
-      return store.daerahs
+  .views((store) => ({
+    getDaerahStringById(id: number) {
+      return store.daerahs.find((d) => d.id === id)?.daerah
     },
   }))
 

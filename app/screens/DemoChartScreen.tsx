@@ -1,11 +1,12 @@
 import React, { FC, useEffect } from "react"
 import { observer } from "mobx-react-lite"
-import { ActivityIndicator, ViewStyle, View } from "react-native"
+import { TextStyle, ViewStyle, View, ActivityIndicator } from "react-native"
 import { AppStackScreenProps } from "app/navigators"
-import { Screen } from "app/components"
+import { Dropdown, Screen } from "app/components"
 // import { useNavigation } from "@react-navigation/native"
-import { Daerah, Tahun, useStores } from "app/models"
-import RNPickerSelect from "react-native-picker-select"
+import { useStores } from "app/models"
+import { Text } from "../components"
+import { spacing } from "app/theme"
 
 interface DemoChartScreenProps extends AppStackScreenProps<"DemoChart"> {}
 
@@ -15,6 +16,8 @@ export const DemoChartScreen: FC<DemoChartScreenProps> = observer(function DemoC
   const { daerahStore, tahunStore } = useStores()
 
   const [isLoading, setIsLoading] = React.useState(false)
+  const [selectedDaerah, setSelectedDaerah] = React.useState("")
+  const [selectedTahun, setSelectedTahun] = React.useState("")
 
   useEffect(() => {
     ;(async function load() {
@@ -27,61 +30,43 @@ export const DemoChartScreen: FC<DemoChartScreenProps> = observer(function DemoC
   // Pull in navigation via hook
   // const navigation = useNavigation()
   return (
-    <Screen contentContainerStyle={$screenContentContainer} preset="fixed" safeAreaEdges={["top"]}>
+    <Screen contentContainerStyle={$container} preset="scroll" safeAreaEdges={["top"]}>
+      <Text preset="heading" text="Penyerapan APBD" style={$title} />
       {isLoading ? (
         <ActivityIndicator />
       ) : (
         <View>
-          <DaerahDropdown data={daerahStore.getDaerahs().slice()} />
-          <TahunDropdown data={tahunStore.getTahuns().slice()} />
+          <Dropdown
+            onValueChange={(value) => {
+              setSelectedDaerah(value)
+            }}
+            items={daerahStore.daerahs.map((d) => ({ label: d.daerah, value: d.id }))}
+            placeholder={{ label: "Pilih daerah ...", value: "" }}
+          />
+          <Dropdown
+            onValueChange={(value) => {
+              setSelectedTahun(value)
+            }}
+            items={tahunStore.tahuns.map((t) => ({
+              label: t.tahun ? t.tahun.toString() : "",
+              value: t.tahun ? t.tahun.toString() : "",
+            }))}
+            placeholder={{ label: "Pilih tahun ...", value: "" }}
+          />
+          <Text preset="subheading">
+            APBD {daerahStore.getDaerahStringById(Number(selectedDaerah))} Tahun {selectedTahun}
+          </Text>
         </View>
       )}
     </Screen>
   )
 })
 
-const TahunDropdown = function TahunDropdown({ data }: { data: Tahun[] }) {
-  const toItems = (data: Tahun[]) =>
-    data.map((t) => {
-      return {
-        label: t.tahun ? t.tahun.toString() : "",
-        value: t.tahun ? t.tahun.toString() : "",
-      }
-    })
-
-  return (
-    <RNPickerSelect
-      onValueChange={(value) => console.info(value)}
-      placeholder={{
-        label: "Pilih tahun ...",
-        value: "",
-      }}
-      items={toItems(data)}
-    />
-  )
+const $container: ViewStyle = {
+  paddingTop: spacing.lg + spacing.xl,
+  paddingHorizontal: spacing.lg,
 }
 
-const DaerahDropdown = function DaerahDropdown({ data }: { data: Daerah[] }) {
-  const toItems = (data: Daerah[]) =>
-    data.map((d) => {
-      return {
-        label: d.daerah ? d.daerah.toString() : "",
-        value: d.id.toString(),
-      }
-    })
-
-  return (
-    <RNPickerSelect
-      onValueChange={(value) => console.info(value)}
-      placeholder={{
-        label: "Pilih daerah ...",
-        value: "",
-      }}
-      items={toItems(data)}
-    />
-  )
-}
-
-const $screenContentContainer: ViewStyle = {
-  flex: 1,
+const $title: TextStyle = {
+  fontSize: spacing.sm,
 }

@@ -55,6 +55,7 @@ export class Supabase {
     const { data, error } = await this.supabase
       .from("tahun")
       .select("*")
+      .order("tahun", { ascending: true })
       .returns<Tables<"tahun">[]>()
 
     if (error) {
