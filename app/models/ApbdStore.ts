@@ -1,14 +1,30 @@
 import { Instance, SnapshotIn, SnapshotOut, types } from "mobx-state-tree"
 import { withSetPropAction } from "./helpers/withSetPropAction"
+import { supabase } from "app/services/api/supabase"
+import { ApbdModel } from "./Apbd"
+import { Daerah } from "./Daerah"
+import { Tahun } from "./Tahun"
 
 /**
  * Model description here for TypeScript hints.
  */
 export const ApbdStoreModel = types
   .model("ApbdStore")
-  .props({})
+  .props({
+    apbd: types.maybe(ApbdModel),
+  })
   .actions(withSetPropAction)
-  .views((self) => ({})) // eslint-disable-line @typescript-eslint/no-unused-vars
+  .views((self) => ({
+    async fetchApbdByDaerahAndTahun(daerah: Daerah, tahun: Tahun) {
+      const response = await supabase.getApbdByIdDaerahAndTahun(daerah.id ?? 0, tahun.tahun ?? 0) // TODO: Fix Tahun's MobX model
+
+      if (response.kind === "ok") {
+        self.setProp("apbd", response.data)
+      } else {
+        console.error(`Error fetching APBD: ${JSON.stringify(response)}`)
+      }
+    },
+  }))
   .actions((self) => ({})) // eslint-disable-line @typescript-eslint/no-unused-vars
 
 export interface ApbdStore extends Instance<typeof ApbdStoreModel> {}
