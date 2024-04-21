@@ -12,6 +12,11 @@ export const TahunStoreModel = types
     tahuns: types.array(TahunModel),
   })
   .actions(withSetPropAction)
+  .views((store) => ({
+    getTahunByNumber(tahun: number) {
+      return store.tahuns.find((t) => t.tahun === tahun)
+    },
+  }))
   .actions((store) => ({
     async fetchTahuns() {
       const response = await supabase.getTahuns()
@@ -21,11 +26,6 @@ export const TahunStoreModel = types
       } else {
         console.error(`Error fetching tahuns: ${JSON.stringify(response)}`)
       }
-    },
-  }))
-  .views((store) => ({
-    getTahuns() {
-      return store.tahuns
     },
   }))
 

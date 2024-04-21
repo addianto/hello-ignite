@@ -12,6 +12,11 @@ export const DaerahStoreModel = types
     daerahs: types.array(DaerahModel),
   })
   .actions(withSetPropAction)
+  .views((store) => ({
+    getDaerahById(id: number) {
+      return store.daerahs.find((d) => d.id === id)
+    },
+  }))
   .actions((store) => ({
     async fetchDaerahs() {
       const response = await supabase.getDaerahs()
@@ -21,11 +26,6 @@ export const DaerahStoreModel = types
       } else {
         console.error(`Error fetching daerahs: ${JSON.stringify(response)}`)
       }
-    },
-  }))
-  .views((store) => ({
-    getDaerahStringById(id: number) {
-      return store.daerahs.find((d) => d.id === id)?.daerah
     },
   }))
 

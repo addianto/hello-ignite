@@ -15,9 +15,9 @@ export const DemoChartScreen: FC<DemoChartScreenProps> = observer(function DemoC
 ) {
   const { daerahStore, tahunStore } = useStores()
 
-  const [isLoading, setIsLoading] = React.useState(false)
-  const [selectedDaerah, setSelectedDaerah] = React.useState("")
-  const [selectedTahun, setSelectedTahun] = React.useState("")
+  const [isLoading, setIsLoading] = React.useState<boolean>(false)
+  const [selectedDaerah, setSelectedDaerah] = React.useState(null)
+  const [selectedTahun, setSelectedTahun] = React.useState(null)
 
   useEffect(() => {
     ;(async function load() {
@@ -27,6 +27,7 @@ export const DemoChartScreen: FC<DemoChartScreenProps> = observer(function DemoC
       setIsLoading(false)
     })()
   }, [daerahStore, tahunStore])
+
   // Pull in navigation via hook
   // const navigation = useNavigation()
   return (
@@ -40,7 +41,7 @@ export const DemoChartScreen: FC<DemoChartScreenProps> = observer(function DemoC
             onValueChange={(value) => {
               setSelectedDaerah(value)
             }}
-            items={daerahStore.daerahs.map((d) => ({ label: d.daerah, value: d.id }))}
+            items={daerahStore.daerahs.map((d) => ({ label: d.daerah, value: d }))}
             placeholder={{ label: "Pilih daerah ...", value: "" }}
           />
           <Dropdown
@@ -48,14 +49,11 @@ export const DemoChartScreen: FC<DemoChartScreenProps> = observer(function DemoC
               setSelectedTahun(value)
             }}
             items={tahunStore.tahuns.map((t) => ({
-              label: t.tahun ? t.tahun.toString() : "",
-              value: t.tahun ? t.tahun.toString() : "",
+              label: t.tahun.toString(),
+              value: t,
             }))}
             placeholder={{ label: "Pilih tahun ...", value: "" }}
           />
-          <Text preset="subheading">
-            APBD {daerahStore.getDaerahStringById(Number(selectedDaerah))} Tahun {selectedTahun}
-          </Text>
         </View>
       )}
     </Screen>

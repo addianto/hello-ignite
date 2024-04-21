@@ -16,7 +16,7 @@ export const ApbdStoreModel = types
   .actions(withSetPropAction)
   .views((self) => ({
     async fetchApbdByDaerahAndTahun(daerah: Daerah, tahun: Tahun) {
-      const response = await supabase.getApbdByIdDaerahAndTahun(daerah.id ?? 0, tahun.tahun ?? 0) // TODO: Fix Tahun's MobX model
+      const response = await supabase.getApbdByIdDaerahAndTahun(daerah.id ?? 0, tahun.tahun)
 
       if (response.kind === "ok") {
         self.setProp("apbd", response.data)
@@ -30,4 +30,3 @@ export const ApbdStoreModel = types
 export interface ApbdStore extends Instance<typeof ApbdStoreModel> {}
 export interface ApbdStoreSnapshotOut extends SnapshotOut<typeof ApbdStoreModel> {}
 export interface ApbdStoreSnapshotIn extends SnapshotIn<typeof ApbdStoreModel> {}
-export const createApbdStoreDefaultModel = () => types.optional(ApbdStoreModel, {})
