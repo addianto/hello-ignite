@@ -1,6 +1,6 @@
 import { MergeDeep } from "type-fest"
 import { Database as DatabaseGenerated } from "./supabase-generated.types"
-export { Json } from "./supabase-generated.types"
+export { Json, Tables } from "./supabase-generated.types"
 
 /**
  * Overrides the type for a specific column in a view.
