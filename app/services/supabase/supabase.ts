@@ -3,11 +3,19 @@ import { createClient, SupabaseClient } from "@supabase/supabase-js"
 import { SupabaseConfig } from "./supabase.types"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import { Database, Tables } from "types/supabase.types"
+import Config from "app/config"
+
+/**
+ * Terminate the process if one of the required config values is missing.
+ * 
+ * See: https://nodejs.org/api/process.html#process_exit_codes
+ */
+const INVALID_ARGUMENT = 9
 
 export const DEFAULT_CONFIG: SupabaseConfig = {
-  url: "http://localhost",
-  key: "TODO",
-  debug: true,
+  url: Config.SUPABASE_URL ?? process.exit(INVALID_ARGUMENT),
+  key: Config.SUPABASE_KEY ?? process.exit(INVALID_ARGUMENT),
+  debug: Boolean(Config.SUPABASE_DEBUG),
 }
 
 export class Supabase {

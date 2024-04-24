@@ -5,6 +5,11 @@
  *
  * https://reactnative.dev/docs/security#storing-sensitive-info
  */
+require("dotenv").config()
+
 export default {
   API_URL: "CHANGEME",
+  SUPABASE_URL: process.env.SUPABASE_URL,
+  SUPABASE_KEY: process.env.SUPABASE_KEY,
+  SUPABASE_DEBUG: process.env.SUPABASE_DEBUG ?? "false",
 }
