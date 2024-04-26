@@ -1,13 +1,14 @@
 import "react-native-url-polyfill"
-import { createClient, SupabaseClient } from "@supabase/supabase-js"
+import { createClient, PostgrestError, SupabaseClient } from "@supabase/supabase-js"
 import { SupabaseConfig } from "./supabase.types"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import { Database, Tables } from "types/supabase.types"
 import Config from "app/config"
+import { YearSnapshotIn } from "app/models"
 
 /**
  * Terminate the process if one of the required config values is missing.
- * 
+ *
  * See: https://nodejs.org/api/process.html#process_exit_codes
  */
 const INVALID_ARGUMENT = 9
@@ -35,10 +36,17 @@ export class Supabase {
     })
   }
 
-  async getYears() {
-    const { data } = await this.supabase.from("years").select("*").returns<Tables<"years">[]>()
+  async getYears(): Promise<YearSnapshotIn[] | PostgrestError> {
+    const { data, error } = await this.supabase
+      .from("years")
+      .select("*")
+      .returns<Tables<"years">[]>()
 
-    return data
+    if (error) {
+      return error
+    }
+
+    return data.map((y) => ({ year: y.year })) ?? []
   }
 
   async getSubdivisions() {
